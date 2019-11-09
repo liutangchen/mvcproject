@@ -1,17 +1,11 @@
-package cn.ybzy.mvcproject.dao;
+package cn.ybzy.mvcproject.service;
 
 import java.sql.Connection;
 import java.util.List;
 
 import cn.ybzy.mvcproject.model.User;
 
-/**
- * 定义与users数据表有关系的操作方法
- * 
- * @author liutangchen
- *
- */
-public interface UserDao {
+public interface UserService {
 	/**
 	 * 实现插入一条新用户信息数据
 	 * 
@@ -51,7 +45,7 @@ public interface UserDao {
 	 * @param id
 	 * @return
 	 */
-	public User get(Connection conn, int id);
+	public User getTransation(int id);
 
 	/**
 	 * 获取所有用户数据
