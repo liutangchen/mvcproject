@@ -53,7 +53,7 @@ public class UserServiceImpl implements UserService {
 	}
 
 	@Override
-	public int getCountByName(String username) {
+	public long getCountByName(String username) {
 		return userDao.getCountByName(username);
 	}
 

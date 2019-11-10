@@ -57,9 +57,9 @@ public class UserDaoImpl extends BaseDao<User> implements UserDao {
 	}
 
 	@Override
-	public int getCountByName(String username) {
+	public long getCountByName(String username) {
 		String sql = "SELECT COUNT(id) FROM users where username = ?;";
-		return (int) super.getValue(sql, username);
+		return (long) super.getValue(sql, username);
 	}
 
 }

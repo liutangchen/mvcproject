@@ -1,6 +1,5 @@
 package cn.ybzy.mvcproject.service;
 
-import java.sql.Connection;
 import java.util.List;
 
 import cn.ybzy.mvcproject.model.User;
@@ -60,5 +59,5 @@ public interface UserService {
 	 * @param username
 	 * @return
 	 */
-	public int getCountByName(String username);
+	public long getCountByName(String username);
 }

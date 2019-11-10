@@ -66,5 +66,5 @@ public interface UserDao {
 	 * @param username
 	 * @return
 	 */
-	public int getCountByName(String username);
+	public long getCountByName(String username);
 }
