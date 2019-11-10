@@ -60,4 +60,14 @@ public interface UserService {
 	 * @return
 	 */
 	public long getCountByName(String username);
+
+	/**
+	 * 这是用户模糊查询的方法
+	 * 
+	 * @param username
+	 * @param address
+	 * @param phoneNo
+	 * @return
+	 */
+	public List<User> query(String username, String address, String phoneNo);
 }

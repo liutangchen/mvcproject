@@ -67,4 +67,14 @@ public interface UserDao {
 	 * @return
 	 */
 	public long getCountByName(String username);
+
+	/**
+	 * dao层里实现模糊查询的方法
+	 * 
+	 * @param username
+	 * @param address
+	 * @param phoneNo
+	 * @return
+	 */
+	public List<User> query(String username, String address, String phoneNo);
 }

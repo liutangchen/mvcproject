@@ -62,4 +62,30 @@ public class UserDaoImpl extends BaseDao<User> implements UserDao {
 		return (long) super.getValue(sql, username);
 	}
 
+	@Override
+	public List<User> query(String username, String address, String phoneNo) {
+		String sql = "SELECT\r\n" + 
+				"users.id,\r\n" + 
+				"users.username,\r\n" + 
+				"users.pasword,\r\n" + 
+				"users.phone_no AS phoneNo,\r\n" + 
+				"users.address,\r\n" + 
+				"users.reg_date AS regDate\r\n" + 
+				"FROM\r\n" + 
+				"users\r\n" + 
+				"WHERE\r\n" + 
+				"1 = 1";
+		if (username != null && !username.equals("")) {
+			sql = sql + " and username like '%"+username+"%'"; //sql×¢ÈëµÄ·çÏÕ
+		}
+		if (address != null && !address.equals("")) {
+			sql = sql + " and address like '%"+address+"%'";
+		}
+		if (phoneNo != null && !phoneNo.equals("")) {
+			sql = sql + " and phone_no like '%"+phoneNo+"%'";
+		}
+		System.out.println(sql);
+		return super.getList(sql);
+	}
+
 }

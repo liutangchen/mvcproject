@@ -57,4 +57,9 @@ public class UserServiceImpl implements UserService {
 		return userDao.getCountByName(username);
 	}
 
+	@Override
+	public List<User> query(String username, String address, String phoneNo) {
+		return userDao.query(username,address,phoneNo);
+	}
+
 }
