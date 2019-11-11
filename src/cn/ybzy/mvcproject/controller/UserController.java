@@ -61,6 +61,8 @@ public class UserController extends HttpServlet{
 		phoneNo = phoneNo.replaceAll("[`~!@#$%^&*()+=|{}':;',\\[\\].<>/?~！@#￥%……&*（）——+|{}【】‘；：”“’。，、？]", "");
 		List<User> list = userService.query(username,address,phoneNo);
 		System.out.println(list);
+		req.setAttribute("userList", list); //把结果集放到req的属性空间
+		req.getRequestDispatcher("/index.jsp").forward(req, resp); //把整个req，resp注入jsp页面
 	}
 	private void delete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		
