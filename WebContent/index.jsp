@@ -38,6 +38,9 @@ td {
 				<td colspan="2" style="text-align: center"><input type="submit"
 					value="查询用户" /></td>
 			</tr>
+			<tr>
+				<td colspan="2" style="text-align: center"><a href="<%=request.getContextPath()%>/add.jsp">注册新用户</a></td>
+			</tr>
 		</table>
 	</form>
 
