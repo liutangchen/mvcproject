@@ -89,6 +89,9 @@ public class UserController extends HttpServlet {
 	}
 
 	private void update(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-
+		int id = Integer.parseInt(req.getParameter("id"));
+		User user = userService.get(id);
+		req.setAttribute("user", user);
+		req.getRequestDispatcher("/update.jsp").forward(req, resp);
 	}
 }
