@@ -94,4 +94,28 @@ public class UserController extends HttpServlet {
 		req.setAttribute("user", user);
 		req.getRequestDispatcher("/update.jsp").forward(req, resp);
 	}
+	
+	private void updatedo(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		int id = Integer.parseInt(req.getParameter("id"));
+		//通过id,拿到数据库中原来user信息
+		User user = userService.get(id);
+		String yUsername = user.getUsername();
+		String xUsername = req.getParameter("username");
+		long cout = userService.getCountByName(xUsername);
+		if (!xUsername.equals(yUsername) && cout > 0) {   //首先新名字与老名字不一样，还能在数据库中找到同名记录，证明名字有冲突
+			req.setAttribute("note", xUsername + ",这个名字已经被占用,请换一个名字!");
+			req.getRequestDispatcher("/update.udo?id=" + id).forward(req, resp);
+			return;
+		}
+		user.setUsername(xUsername);
+		user.setPasword(req.getParameter("pasword"));
+		user.setAddress(req.getParameter("address"));
+		user.setPhoneNo(req.getParameter("phoneNo"));
+		int rows = userService.updateUserById(user);
+		if (rows > 0) {
+			resp.sendRedirect(req.getContextPath() + "/index.jsp");
+		} else {
+			resp.sendRedirect(req.getContextPath() + "/error.jsp");
+		}
+	}
 }
