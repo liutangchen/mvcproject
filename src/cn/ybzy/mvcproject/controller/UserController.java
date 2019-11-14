@@ -44,7 +44,14 @@ public class UserController extends HttpServlet {
 
 	private void add(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		User user = new User();
-		user.setUsername(req.getParameter("username"));
+		String username = req.getParameter("username");
+		long cout = userService.getCountByName(username);
+		if (cout > 0) {
+			req.setAttribute("reminder","用户名已存在！");
+			req.getRequestDispatcher("/add.jsp").forward(req,resp);
+			return;
+		}
+		user.setUsername(username);
 		user.setPasword(req.getParameter("pasword"));
 		user.setAddress(req.getParameter("address"));
 		user.setPhoneNo(req.getParameter("phoneNo"));

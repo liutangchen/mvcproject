@@ -18,7 +18,17 @@ td {
 <body>
 	<form action="<%=request.getContextPath()%>/add.udo" method="post">
 		<table
-			style="margin-left: 100px; padding: 50px; border: 1px #ccc solid; width: 400px;">
+			style="margin-left: 100px; padding: 50px; border: 1px #ccc solid; width: 600px;">
+			<%
+				String reminder = (String)request.getAttribute("reminder");
+				if(reminder != null && !reminder.equals("")){
+			%>
+			<tr>
+				<td style="text-align: right;"><%=reminder %></td>
+			</tr>
+			<%
+				}
+			%>
 			<tr>
 				<td style="text-align: right;">用户名：</td>
 				<td style="text-align: left;"><input type="text"
